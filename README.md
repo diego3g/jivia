@@ -1,18 +1,7 @@
-# electron-quick-start
+# Minimalistic Electron React Boilerplate Code
 
-**Clone and run for a quick way to see an Electron in action.**
 
-This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start) within the Electron documentation.
-
-**Use this app along with the [Electron API Demos](http://electron.atom.io/#get-started) app for API code examples to help you get started.**
-
-A basic Electron application needs just these files:
-
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
-
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start).
+This is a minimal Electron React boilerplate code using webpack and webpack-loader. It's simple and you can built upon starter code. I know there are tons of boilerplate code out there but either they are too tricky for beginner or just a pain. I wanted to code my app not stuck in configuring for a year. Feel free to improve by commiting changes
 
 ## To Use
 
@@ -20,21 +9,21 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 ```bash
 # Clone this repository
-git clone https://github.com/electron/electron-quick-start
+git clone https://github.com/alexakasanjeev/electron-react-quick-start.git your-project-name
 # Go into the repository
-cd electron-quick-start
+cd your-project-name
 # Install dependencies
 npm install
-# Run the app
+# Start the webpack first
+npm run dev
+# In different terminal, start app
 npm start
 ```
 
+
+**After making changes to renderer.js hit Ctrl+R in app window to reload manually**
+There is no hot reloading. This is a minimal boilerplate code that will just get you started.
+
+##
+
 Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
-
-## Other Example Apps
-
-For more example apps, see the
-[list of boilerplates](http://electron.atom.io/community/#boilerplates)
-created by the awesome electron community.
-
-#### License [CC0 1.0 (Public Domain)](LICENSE.md)
