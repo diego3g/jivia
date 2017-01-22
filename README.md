@@ -24,6 +24,6 @@ npm start
 **After making changes to renderer.js hit Ctrl+R in app window to reload manually**
 There is no hot reloading. This is a minimal boilerplate code that will just get you started.
 
-##
+`**IMPORTANT** Everytime you change something (in any js file) you have to change something in render.js( type something then comment it out) and hit Ctrl+ R to recompile everything `
 
 Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
