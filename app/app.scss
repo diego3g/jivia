@@ -1,0 +1,31 @@
+html, body, #app, .wrapper {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .gameContainer {
+    display: flex;
+    flex-direction: row;
+
+    .leftBar,
+    .rightBar {
+      flex: 1;
+      width: 200px;
+      background: #333;
+    }
+  }
+
+  .chatContainer {
+    flex: 1;
+    background: #222;
+  }
+}

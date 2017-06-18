@@ -1,0 +1,10 @@
+{
+  "1": {
+    "image": "grass.png",
+    "walkable": true
+  },
+  "2": {
+    "image": "wood.gif",
+    "walkable": false
+  }
+}
