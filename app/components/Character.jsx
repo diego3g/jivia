@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import stylePropType from 'react-style-proptype';
 import './assets/styles/Character.scss';
 
 import outfits from '../../resources/outfits.json';
@@ -33,19 +34,19 @@ class Character extends React.Component {
   }
 }
 
+Character.propTypes = {
+  name: PropTypes.string.isRequired,
+  life: PropTypes.number,
+  outfit: PropTypes.string,
+  position: PropTypes.string,
+  style: stylePropType,
+};
+
 Character.defaultProps = {
   life: 1,
   outfit: '1',
   position: 'down',
   style: {},
-};
-
-Character.propTypes = {
-  name: PropTypes.string.isRequired,
-  life: PropTypes.string.number,
-  outfit: PropTypes.string,
-  position: PropTypes.string,
-  style: PropTypes.style,
 };
 
 export default Character;

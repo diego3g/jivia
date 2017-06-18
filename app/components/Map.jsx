@@ -1,5 +1,4 @@
 import React from 'react';
-import keydown from 'react-keydown';
 import _ from 'lodash';
 import Throttle from 'lodash-decorators/throttle';
 import './assets/styles/Map.scss';
@@ -15,6 +14,7 @@ class Map extends React.Component {
     super(props);
 
     this.state = {
+      keyState: {},
       charPos: {
         x: 8,
         y: 5,
@@ -24,8 +24,39 @@ class Map extends React.Component {
     };
   }
 
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown.bind(this), true);
+    window.addEventListener('keyup', this.handleKeyUp.bind(this), true);
+
+    setInterval(this.walk.bind(this), 10);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown.bind(this), true);
+    window.removeEventListener('keyup', this.handleKeyUp.bind(this), true);
+  }
+
+  handleKeyDown(e) {
+    this.setState((state) => {
+      const newState = state;
+
+      newState.keyState[e.key] = true;
+      return newState;
+    });
+  }
+
+  handleKeyUp(e) {
+    this.setState((state) => {
+      const newState = state;
+
+      newState.keyState[e.key] = false;
+      return newState;
+    });
+  }
+
   @Throttle(200, { trailing: false })
   walkTo(axis, value) {
+    console.log('walk');
     if (value < 0) return;
 
     this.setState((state) => {
@@ -36,23 +67,24 @@ class Map extends React.Component {
     });
   }
 
-  @keydown(['w', 'up'])
-  w() { this.walkTo('y', this.state.charPos.y - 1); }
-
-  @keydown(['s', 'down'])
-  s() { this.walkTo('y', this.state.charPos.y + 1); }
-
-  @keydown(['a', 'left'])
-  a() { this.walkTo('x', this.state.charPos.x - 1); }
-
-  @keydown(['d', 'right'])
-  d() { this.walkTo('x', this.state.charPos.x + 1); }
+  walk() {
+    if (this.state.keyState.w) {
+      this.walkTo('y', this.state.charPos.y - 1);
+    } else if (this.state.keyState.s) {
+      this.walkTo('y', this.state.charPos.y + 1);
+    } else if (this.state.keyState.a) {
+      this.walkTo('x', this.state.charPos.x - 1);
+    } else if (this.state.keyState.d) {
+      this.walkTo('x', this.state.charPos.x + 1);
+    }
+  }
 
   render() {
     return (
       <div className="map">
         <div
           className="mapView"
+          ref={(map) => { this.mapView = map; }}
           style={{
             left: -64 * (this.state.charPos.x - 7),
             top: -64 * (this.state.charPos.y - 5),

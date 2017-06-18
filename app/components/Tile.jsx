@@ -31,7 +31,7 @@ class Tile extends React.Component {
 }
 
 Tile.propTypes = {
-  tile: PropTypes.string.isRequired,
+  tile: PropTypes.number.isRequired,
   x: PropTypes.number.isRequired,
   y: PropTypes.number.isRequired,
 };
