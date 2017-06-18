@@ -13,10 +13,18 @@
   width: 100%;
   height: 100%;
   position: relative;
+  transition: all 0.2s;
 
   .tile {
     width: 64px;
     height: 64px;
     position: absolute;
   }
+}
+
+.mainCharacter {
+  left: 50%;
+  top: 50%;
+  margin-top: -32px;
+  margin-left: -32px;
 }

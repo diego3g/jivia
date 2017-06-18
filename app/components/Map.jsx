@@ -4,8 +4,11 @@ import _ from 'lodash';
 import Throttle from 'lodash-decorators/throttle';
 import './assets/styles/Map.scss';
 
+import Character from './Character';
+
 import gameMap from '../../resources/map.json';
 import tiles from '../../resources/tiles.json';
+import npcs from '../../resources/npcs.json';
 
 class Map extends React.Component {
   constructor(props) {
@@ -16,6 +19,7 @@ class Map extends React.Component {
         x: 8,
         y: 5,
         z: 0,
+        ref: 'down',
       },
     };
   }
@@ -32,24 +36,16 @@ class Map extends React.Component {
   }
 
   @keydown('w')
-  w() {
-    this.walkTo('y', this.state.charPos.y - 1);
-  }
+  w() { this.walkTo('y', this.state.charPos.y - 1); }
 
   @keydown('s')
-  s() {
-    this.walkTo('y', this.state.charPos.y + 1);
-  }
+  s() { this.walkTo('y', this.state.charPos.y + 1); }
 
   @keydown('a')
-  a() {
-    this.walkTo('x', this.state.charPos.x - 1);
-  }
+  a() { this.walkTo('x', this.state.charPos.x - 1); }
 
   @keydown('d')
-  d() {
-    this.walkTo('x', this.state.charPos.x + 1);
-  }
+  d() { this.walkTo('x', this.state.charPos.x + 1); }
 
   render() {
     return (
@@ -83,8 +79,22 @@ class Map extends React.Component {
               </div>
             );
           }) }
+
+          { _.map(npcs, function(npc, key) {
+            return (
+              <Character
+                style={{
+                  left: 64 * npc.pos.x,
+                  top: 64 * npc.pos.y
+                }}
+                key={key}
+                outfit={npc.outfit}
+                name={npc.name}
+                />
+            )
+          }) }
         </div>
-        {this.props.children}
+        <Character name="Diego" className="mainCharacter" position={this.state.charPos.ref} />
       </div>
     );
   }
