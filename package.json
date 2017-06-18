@@ -1,14 +1,17 @@
 {
-  "name": "electron-react-quick-start",
+  "name": "jivia",
   "version": "0.0.1",
-  "description": "A minimal Electron React application",
+  "description": "An 2D RPG Javascript game (it's like tibia).",
   "main": "main.js",
   "scripts": {
     "dev": "webpack --watch",
     "start": "electron ."
   },
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": [
+    "Diego Schell Fernandes <diego.schell.f@gmail.com>",
+    "Guilherme Pellizzetti <guilherme@databoxsistemas.com.br>"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",

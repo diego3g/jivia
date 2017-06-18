@@ -9,10 +9,10 @@ class Character extends React.Component {
 
     this.state = {
       name: props.name,
-      life: props.life || 1,
-      outfit: props.outfit || '1',
-      position: props.position || 'down',
-    }
+      life: props.life,
+      outfit: props.outfit,
+      position: props.position,
+    };
   }
 
   render() {
@@ -24,13 +24,28 @@ class Character extends React.Component {
         <div className="characterInfo">
           <span className="name">{this.state.name}</span>
           <span className="bar">
-            <span className="percentage" style={{ width: `${this.state.life * 100}%` }}></span>
+            <span className="percentage" style={{ width: `${this.state.life * 100}%` }} />
           </span>
         </div>
-        <img src={outfitImage} />
+        <img src={outfitImage} alt="" />
       </div>
     );
   }
 }
+
+Character.defaultProps = {
+  life: 1,
+  outfit: '1',
+  position: 'down',
+  style: {},
+};
+
+Character.propTypes = {
+  name: PropTypes.string.isRequired,
+  life: PropTypes.string.number,
+  outfit: PropTypes.string,
+  position: PropTypes.string,
+  style: PropTypes.style,
+};
 
 export default Character;

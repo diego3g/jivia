@@ -1,42 +1,43 @@
-const electron = require('electron')
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
+const electron = require('electron');
 
-const path = require('path')
-const url = require('url')
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 
-let mainWindow
+const path = require('path');
+const url = require('url');
 
-function createWindow () {
-  let screenSize = electron.screen.getPrimaryDisplay().size
+let mainWindow;
+
+function createWindow() {
+  const screenSize = electron.screen.getPrimaryDisplay().size;
   mainWindow = new BrowserWindow({
     width: screenSize.width,
     height: screenSize.height,
     minWidth: 1360,
-    minHeight: 850
-  })
+    minHeight: 850,
+  });
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
-    slashes: true
-  }))
+    slashes: true,
+  }));
 
-  mainWindow.on('closed', function () {
-    mainWindow = null
-  })
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
 }
 
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
+});
 
-app.on('activate', function () {
+app.on('activate', () => {
   if (mainWindow === null) {
-    createWindow()
+    createWindow();
   }
-})
+});

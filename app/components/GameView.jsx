@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import './assets/styles/GameView.scss';
 
 import Map from './Map';

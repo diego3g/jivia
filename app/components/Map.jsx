@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import keydown from 'react-keydown';
 import _ from 'lodash';
 import Throttle from 'lodash-decorators/throttle';
@@ -29,9 +29,10 @@ class Map extends React.Component {
     if (value < 0) return;
 
     this.setState((state) => {
-      state.charPos[axis] = value;
+      const newState = state;
+      newState.charPos[axis] = value;
 
-      return state;
+      return newState;
     });
   }
 
@@ -80,19 +81,17 @@ class Map extends React.Component {
             );
           }) }
 
-          { _.map(npcs, function(npc, key) {
-            return (
-              <Character
-                style={{
-                  left: 64 * npc.pos.x,
-                  top: 64 * npc.pos.y
-                }}
-                key={key}
-                outfit={npc.outfit}
-                name={npc.name}
-                />
-            )
-          }) }
+          { _.map(npcs, (npc, key) => (
+            <Character
+              style={{
+                left: 64 * npc.pos.x,
+                top: 64 * npc.pos.y,
+              }}
+              key={key}
+              outfit={npc.outfit}
+              name={npc.name}
+            />
+          ))}
         </div>
         <Character name="Diego" className="mainCharacter" position={this.state.charPos.ref} />
       </div>
