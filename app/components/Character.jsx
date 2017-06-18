@@ -1,11 +1,18 @@
-import React, { PropTypes } from 'react';
-import stylePropType from 'react-style-proptype';
+/* @flow */
+import React from 'react';
 import './assets/styles/Character.scss';
 
 import outfits from '../../resources/outfits.json';
 
 class Character extends React.Component {
-  constructor(props) {
+  static defaultProps = {
+    life: 1,
+    outfit: '1',
+    position: 'down',
+    style: {},
+  };
+
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -14,6 +21,13 @@ class Character extends React.Component {
       outfit: props.outfit,
       position: props.position,
     };
+  }
+
+  state: {
+    name: string,
+    life: number,
+    outfit: string,
+    position: string,
   }
 
   render() {
@@ -33,20 +47,5 @@ class Character extends React.Component {
     );
   }
 }
-
-Character.propTypes = {
-  name: PropTypes.string.isRequired,
-  life: PropTypes.number,
-  outfit: PropTypes.string,
-  position: PropTypes.string,
-  style: stylePropType,
-};
-
-Character.defaultProps = {
-  life: 1,
-  outfit: '1',
-  position: 'down',
-  style: {},
-};
 
 export default Character;
