@@ -1,32 +1,40 @@
+const path = require('path');
+
 module.exports = {
-  entry: './app/index.js',
-  output:{
-    filename: './public/bundle.js'
+  entry: path.join(__dirname, 'app', 'index.jsx'),
+  output: {
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js',
+    libraryTarget: 'umd',
   },
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
           plugins: ['transform-decorators-legacy'],
-          presets: ['react', 'es2015']
-        }
+          presets: ['react', 'es2015'],
+        },
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loaders: ["style-loader", "css-loader", "sass-loader"]
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpg|gif|)$/,
-        loader: 'url-loader?limit=200000'
+        loader: 'url-loader?limit=200000',
       },
       {
         test: /\.json$/,
-        use: 'json-loader'
-      }
-    ]
-  }
-}
+        use: 'json-loader',
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    modules: [path.join(__dirname, 'app'), 'node_modules'],
+  },
+};
