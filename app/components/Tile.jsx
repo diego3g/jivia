@@ -1,9 +1,10 @@
-import React, { PropTypes } from 'react';
+/* @flow */
+import React from 'react';
 
 import tiles from '../../resources/tiles.json';
 
 class Tile extends React.Component {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -11,6 +12,15 @@ class Tile extends React.Component {
       x: this.props.x,
       y: this.props.y,
     };
+  }
+
+  state: {
+    tile: {
+      image: string,
+      walkable: boolean,
+    },
+    x: number,
+    y: number,
   }
 
   render() {
@@ -29,11 +39,5 @@ class Tile extends React.Component {
     );
   }
 }
-
-Tile.propTypes = {
-  tile: PropTypes.number.isRequired,
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-};
 
 export default Tile;

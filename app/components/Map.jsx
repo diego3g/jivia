@@ -1,3 +1,4 @@
+/* @flow */
 import React from 'react';
 import _ from 'lodash';
 import Throttle from 'lodash-decorators/throttle';
@@ -10,7 +11,7 @@ import gameMap from '../../resources/map.json';
 import npcs from '../../resources/npcs.json';
 
 class Map extends React.Component {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -22,6 +23,16 @@ class Map extends React.Component {
         ref: 'down',
       },
     };
+  }
+
+  state: {
+    keyState: any,
+    charPos: {
+      x: number,
+      y: number,
+      z: number,
+      ref: string,
+    }
   }
 
   componentDidMount() {
@@ -36,7 +47,7 @@ class Map extends React.Component {
     window.removeEventListener('keyup', this.handleKeyUp.bind(this), true);
   }
 
-  handleKeyDown(e) {
+  handleKeyDown(e: any): void {
     this.setState((state) => {
       const newState = state;
 
@@ -45,7 +56,7 @@ class Map extends React.Component {
     });
   }
 
-  handleKeyUp(e) {
+  handleKeyUp(e: any): void {
     this.setState((state) => {
       const newState = state;
 
@@ -55,8 +66,7 @@ class Map extends React.Component {
   }
 
   @Throttle(200, { trailing: false })
-  walkTo(axis, value) {
-    console.log('walk');
+  walkTo(axis: string, value: number): void {
     if (value < 0) return;
 
     this.setState((state) => {
@@ -84,7 +94,6 @@ class Map extends React.Component {
       <div className="map">
         <div
           className="mapView"
-          ref={(map) => { this.mapView = map; }}
           style={{
             left: -64 * (this.state.charPos.x - 7),
             top: -64 * (this.state.charPos.y - 5),
@@ -101,7 +110,6 @@ class Map extends React.Component {
               { _.map(mapPos.additional, (add) => {
                 /* eslint-disable global-require, import/no-dynamic-require */
                 const addImage = require(`./assets/images/${add.image}`);
-
                 return <img key={key} src={addImage} alt="" />;
               }) }
             </Tile>

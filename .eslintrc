@@ -7,6 +7,10 @@
   "parser": "babel-eslint",
   "plugins": [
     "react",
-    "jsx-a11y"
-  ]
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {
+    "react/prop-types": "off"
+  }
 }
