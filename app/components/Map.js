@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import keydown from 'react-keydown'
 import _ from 'lodash'
+import Throttle from 'lodash-decorators/throttle';
 import './assets/styles/Map.scss'
 
 import gameMap from '../../resources/map.json'
@@ -19,8 +20,9 @@ class Map extends React.Component {
     }
   }
 
+  @Throttle(200, {'trailing': false})
   walkTo(axis, value) {
-    if (value < 0) return; 
+    if (value < 0) return;
 
     this.setState(function(state) {
        state.charPos[axis] = value
