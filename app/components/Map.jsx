@@ -4,10 +4,10 @@ import _ from 'lodash';
 import Throttle from 'lodash-decorators/throttle';
 import './assets/styles/Map.scss';
 
+import Tile from './Tile';
 import Character from './Character';
 
 import gameMap from '../../resources/map.json';
-import tiles from '../../resources/tiles.json';
 import npcs from '../../resources/npcs.json';
 
 class Map extends React.Component {
@@ -36,16 +36,16 @@ class Map extends React.Component {
     });
   }
 
-  @keydown('w')
+  @keydown(['w', 'up'])
   w() { this.walkTo('y', this.state.charPos.y - 1); }
 
-  @keydown('s')
+  @keydown(['s', 'down'])
   s() { this.walkTo('y', this.state.charPos.y + 1); }
 
-  @keydown('a')
+  @keydown(['a', 'left'])
   a() { this.walkTo('x', this.state.charPos.x - 1); }
 
-  @keydown('d')
+  @keydown(['d', 'right'])
   d() { this.walkTo('x', this.state.charPos.x + 1); }
 
   render() {
@@ -58,28 +58,22 @@ class Map extends React.Component {
             top: -64 * (this.state.charPos.y - 5),
           }}
         >
-          { _.map(gameMap, (mapPos, key) => {
-            /* eslint-disable global-require, import/no-dynamic-require */
-            const tileImage = require(`./assets/images/tiles/${tiles[mapPos.tile].image}`);
+          { _.map(gameMap, (mapPos, key) => (
+            <Tile
+              key={key}
+              tile={mapPos.tile}
+              x={mapPos.x}
+              y={mapPos.y}
+              z={mapPos.z}
+            >
+              { _.map(mapPos.additional, (add) => {
+                /* eslint-disable global-require, import/no-dynamic-require */
+                const addImage = require(`./assets/images/${add.image}`);
 
-            return (
-              <div
-                className="tile"
-                key={key}
-                style={{
-                  background: `url(${tileImage})`,
-                  left: 64 * mapPos.x,
-                  top: 64 * mapPos.y,
-                }}
-              >
-                { _.map(mapPos.additional, (add) => {
-                  const addImage = require(`./assets/images/${add.image}`);
-
-                  return <img key={key} src={addImage} alt="" />;
-                }) }
-              </div>
-            );
-          }) }
+                return <img key={key} src={addImage} alt="" />;
+              }) }
+            </Tile>
+          )) }
 
           { _.map(npcs, (npc, key) => (
             <Character
