@@ -9,12 +9,22 @@ import Character from './Character';
 
 import gameMap from '../../resources/map.json';
 import npcs from '../../resources/npcs.json';
+import tiles from '../../resources/tiles.json';
 
 class Map extends React.Component {
+  static getPosTile(pos: any): void {
+    const mapTile = _.find(gameMap, { x: pos.x, y: pos.y, z: pos.z });
+
+    if (!mapTile) return false;
+
+    return tiles[mapTile.tile];
+  }
+
   constructor(props: any) {
     super(props);
 
     this.state = {
+      tiles: [],
       keyState: {},
       charPos: {
         x: 8,
@@ -26,6 +36,7 @@ class Map extends React.Component {
   }
 
   state: {
+    tiles: any,
     keyState: any,
     charPos: {
       x: number,
@@ -69,9 +80,16 @@ class Map extends React.Component {
   walkTo(axis: string, value: number): void {
     if (value < 0) return;
 
+    const newPos = _.clone(this.state.charPos);
+    newPos[axis] = value;
+
+    if (Map.getPosTile(newPos) === false || Map.getPosTile(newPos).walkable === false) {
+      return;
+    }
+
     this.setState((state) => {
       const newState = state;
-      newState.charPos[axis] = value;
+      newState.charPos = newPos;
 
       return newState;
     });
@@ -110,7 +128,7 @@ class Map extends React.Component {
               { _.map(mapPos.additional, (add) => {
                 /* eslint-disable global-require, import/no-dynamic-require */
                 const addImage = require(`./assets/images/${add.image}`);
-                return <img key={key} src={addImage} alt="" />;
+                return <img key={key} src={`public/${addImage}`} alt="" />;
               }) }
             </Tile>
           )) }
@@ -127,7 +145,7 @@ class Map extends React.Component {
             />
           ))}
         </div>
-        <Character name="Diego" className="mainCharacter" position={this.state.charPos.ref} />
+        <Character name="Diego" className="mainCharacter" life={0.5} position={this.state.charPos.ref} />
       </div>
     );
   }

@@ -1,10 +1,14 @@
 {
-  "1": {
-    "image": "grass.png",
+  "swamp-grass": {
+    "type": "nature",
+    "x": 0,
+    "y": 0,
     "walkable": true
   },
-  "2": {
-    "image": "wood.gif",
+  "swamp-grass-addon-1": {
+    "type": "nature",
+    "x": 1,
+    "y": 0,
     "walkable": false
   }
 }

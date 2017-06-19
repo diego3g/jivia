@@ -42,7 +42,7 @@ class Character extends React.Component {
             <span className="percentage" style={{ width: `${this.state.life * 100}%` }} />
           </span>
         </div>
-        <img src={outfitImage} alt="" />
+        <img src={`public/${outfitImage}`} alt="" />
       </div>
     );
   }

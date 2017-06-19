@@ -16,7 +16,9 @@ class Tile extends React.Component {
 
   state: {
     tile: {
-      image: string,
+      type: string,
+      x: number,
+      y: number,
       walkable: boolean,
     },
     x: number,
@@ -25,13 +27,13 @@ class Tile extends React.Component {
 
   render() {
     /* eslint-disable global-require, import/no-dynamic-require */
-    const tileImage = require(`./assets/images/tiles/${this.state.tile.image}`);
+    const tileImage = require(`./assets/images/tiles/${this.state.tile.type}/sprite.png`);
 
     return (
       <div
         className="tile"
         style={{
-          background: `url(${tileImage})`,
+          background: `url(public/${tileImage}) ${this.state.tile.x * 64}px ${this.state.tile.y * 64}px`,
           left: 64 * this.state.x,
           top: 64 * this.state.y,
         }}

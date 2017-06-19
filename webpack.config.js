@@ -23,9 +23,16 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      // {
+      //   test: /\.(png|jpg|gif|)$/,
+      //   loader: 'url-loader?limit=200000',
+      // },
       {
-        test: /\.(png|jpg|gif|)$/,
-        loader: 'url-loader?limit=200000',
+        test: /\.(jpg|png|svg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[hash].[ext]',
+        },
       },
       {
         test: /\.json$/,
