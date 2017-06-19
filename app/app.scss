@@ -17,11 +17,11 @@ body {
     display: flex;
     flex-direction: row;
 
-    .leftBar,
     .rightBar {
       flex: 1;
       width: 200px;
       background: #333;
+      outline: 1px solid blue;
     }
   }
 

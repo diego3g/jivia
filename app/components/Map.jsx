@@ -113,7 +113,7 @@ class Map extends React.Component {
         <div
           className="mapView"
           style={{
-            left: -64 * (this.state.charPos.x - 7),
+            left: -64 * (this.state.charPos.x - 9),
             top: -64 * (this.state.charPos.y - 5),
           }}
         >
