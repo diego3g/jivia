@@ -2,13 +2,13 @@
 import React from 'react';
 import _ from 'lodash';
 import Throttle from 'lodash-decorators/throttle';
-import './assets/styles/Map.scss';
+import 'components/assets/styles/Map.scss';
 
-import Tile from './Tile';
-import Character from './Character';
+import Tile from 'components/Tile';
+import Character from 'components/Character';
 
-import gameMap from '../../resources/map.json';
-import npcs from '../../resources/npcs.json';
+import gameMap from 'resources/map.json';
+import npcs from 'resources/npcs.json';
 
 class Map extends React.Component {
   constructor(props: any) {
@@ -120,7 +120,7 @@ class Map extends React.Component {
             >
               { _.map(mapPos.additional, (add) => {
                 /* eslint-disable global-require, import/no-dynamic-require */
-                const addImage = require(`./assets/images/${add.image}`);
+                const addImage = require(`components/assets/images/${add.image}`);
                 return <img key={key} src={`public/${addImage}`} alt="" />;
               }) }
             </Tile>

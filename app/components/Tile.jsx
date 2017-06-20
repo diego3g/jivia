@@ -2,9 +2,9 @@
 import React from 'react';
 import _ from 'lodash';
 
-import gameMap from '../../resources/map.json';
-import tiles from '../../resources/tiles.json';
-import npcs from '../../resources/npcs.json';
+import gameMap from 'resources/map.json';
+import tiles from 'resources/tiles.json';
+import npcs from 'resources/npcs.json';
 
 class Tile extends React.Component {
   static isWalkable(pos: any): void {

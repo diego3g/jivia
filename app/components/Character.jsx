@@ -1,8 +1,8 @@
 /* @flow */
 import React from 'react';
-import './assets/styles/Character.scss';
+import 'components/assets/styles/Character.scss';
 
-import outfits from '../../resources/outfits.json';
+import outfits from 'resources/outfits.json';
 
 class Character extends React.Component {
   static defaultProps = {
@@ -32,7 +32,7 @@ class Character extends React.Component {
 
   render() {
     /* eslint-disable global-require, import/no-dynamic-require */
-    const outfitImage = require(`./assets/images/outfits/${outfits[this.state.outfit].image}-${this.state.position}.png`);
+    const outfitImage = require(`components/assets/images/outfits/${outfits[this.state.outfit].image}-${this.state.position}.png`);
 
     let lifeStatus;
     if (this.state.life < 0.1) {

@@ -1,6 +1,6 @@
 /* @flow */
 import React from 'react';
-import './assets/styles/GameView.scss';
+import 'components/assets/styles/GameView.scss';
 
 import Map from './Map';
 
