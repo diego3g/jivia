@@ -34,12 +34,21 @@ class Character extends React.Component {
     /* eslint-disable global-require, import/no-dynamic-require */
     const outfitImage = require(`./assets/images/outfits/${outfits[this.state.outfit].image}-${this.state.position}.png`);
 
+    let lifeStatus;
+    if (this.state.life < 0.1) {
+      lifeStatus = 'critical';
+    } else if (this.state.life < 0.3) {
+      lifeStatus = 'very-low';
+    } else if (this.state.life < 0.7) {
+      lifeStatus = 'low';
+    }
+
     return (
       <div style={this.props.style} className="character">
         <div className="characterInfo">
           <span className="name">{this.state.name}</span>
           <span className="bar">
-            <span className="percentage" style={{ width: `${this.state.life * 100}%` }} />
+            <span className={`percentage status-${lifeStatus}`} style={{ width: `${this.state.life * 100}%` }} />
           </span>
         </div>
         <img src={`public/${outfitImage}`} alt="" />

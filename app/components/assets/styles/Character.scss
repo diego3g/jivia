@@ -32,6 +32,18 @@
         display: block;
         height: 3px;
         background: green;
+
+        &.status-low {
+          background: gold;
+        }
+
+        &.status-very-low {
+          background: red;
+        }
+
+        &.status-critical {
+          background: darkred;
+        }
       }
     }
   }

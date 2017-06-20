@@ -68,6 +68,15 @@ class Map extends React.Component {
   }
 
   @Throttle(200, { trailing: false })
+  changeMapPosition(pos: any): void {
+    this.setState((state) => {
+      const newState = state;
+      newState.charPos = pos;
+
+      return newState;
+    });
+  }
+
   walkTo(axis: string, value: number): void {
     if (value < 0) return;
 
@@ -76,12 +85,7 @@ class Map extends React.Component {
 
     if (!Tile.isWalkable(newPos)) return;
 
-    this.setState((state) => {
-      const newState = state;
-      newState.charPos = newPos;
-
-      return newState;
-    });
+    this.changeMapPosition(newPos);
   }
 
   walk() {
@@ -134,7 +138,7 @@ class Map extends React.Component {
             />
           ))}
         </div>
-        <Character name="Diego" className="mainCharacter" life={0.5} position={this.state.charPos.ref} />
+        <Character name="Diego" className="mainCharacter" life={0.08} position={this.state.charPos.ref} />
       </div>
     );
   }
