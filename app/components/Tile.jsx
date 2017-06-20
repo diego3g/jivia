@@ -1,9 +1,25 @@
 /* @flow */
 import React from 'react';
+import _ from 'lodash';
 
+import gameMap from '../../resources/map.json';
 import tiles from '../../resources/tiles.json';
+import npcs from '../../resources/npcs.json';
 
 class Tile extends React.Component {
+  static isWalkable(pos: any): void {
+    const mapTile = _.find(gameMap, { x: pos.x, y: pos.y, z: pos.z });
+
+    if (!mapTile) return false;
+    if (!tiles[mapTile.tile].walkable) return false;
+    if (_.find(mapTile.additional, { walkable: false }) !== undefined) return false;
+
+    const npcTile = _.find(npcs, { x: pos.x, y: pos.y, z: pos.z });
+    if (npcTile) return false;
+
+    return true;
+  }
+
   constructor(props: any) {
     super(props);
 
@@ -37,7 +53,9 @@ class Tile extends React.Component {
           left: 64 * this.state.x,
           top: 64 * this.state.y,
         }}
-      />
+      >
+        { this.props.children }
+      </div>
     );
   }
 }

@@ -9,17 +9,8 @@ import Character from './Character';
 
 import gameMap from '../../resources/map.json';
 import npcs from '../../resources/npcs.json';
-import tiles from '../../resources/tiles.json';
 
 class Map extends React.Component {
-  static getPosTile(pos: any): void {
-    const mapTile = _.find(gameMap, { x: pos.x, y: pos.y, z: pos.z });
-
-    if (!mapTile) return false;
-
-    return tiles[mapTile.tile];
-  }
-
   constructor(props: any) {
     super(props);
 
@@ -83,9 +74,7 @@ class Map extends React.Component {
     const newPos = _.clone(this.state.charPos);
     newPos[axis] = value;
 
-    if (Map.getPosTile(newPos) === false || Map.getPosTile(newPos).walkable === false) {
-      return;
-    }
+    if (!Tile.isWalkable(newPos)) return;
 
     this.setState((state) => {
       const newState = state;
@@ -136,8 +125,8 @@ class Map extends React.Component {
           { _.map(npcs, (npc, key) => (
             <Character
               style={{
-                left: 64 * npc.pos.x,
-                top: 64 * npc.pos.y,
+                left: 64 * npc.x,
+                top: 64 * npc.y,
               }}
               key={key}
               outfit={npc.outfit}

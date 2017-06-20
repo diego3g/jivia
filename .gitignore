@@ -4,3 +4,4 @@ yarn.lock
 package-lock.json
 public/*
 !public/.gitkeep
+npm-debug.log
