@@ -32,18 +32,36 @@
         display: block;
         height: 3px;
         background: green;
+      }
+    }
 
-        &.status-low {
-          background: gold;
-        }
+    &.status-low {
+      & {
+        color: gold;
+      }
 
-        &.status-very-low {
-          background: red;
-        }
+      .bar span.percentage {
+        background: gold;
+      }
+    }
 
-        &.status-critical {
-          background: darkred;
-        }
+    &.status-very-low {
+      & {
+        color: red;
+      }
+
+      .bar span.percentage {
+        background: red;
+      }
+    }
+
+    &.status-critical {
+      & {
+        color: darkred;
+      }
+
+      .bar span.percentage {
+        background: darkred;
       }
     }
   }

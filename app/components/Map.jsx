@@ -19,7 +19,7 @@ class Map extends React.Component {
       keyState: {},
       charPos: {
         x: 8,
-        y: 5,
+        y: 6,
         z: 0,
         ref: 'down',
       },
@@ -138,7 +138,7 @@ class Map extends React.Component {
             />
           ))}
         </div>
-        <Character name="Diego" className="mainCharacter" life={0.08} position={this.state.charPos.ref} />
+        <Character name="Diego" className="mainCharacter" life={1} position={this.state.charPos.ref} />
       </div>
     );
   }

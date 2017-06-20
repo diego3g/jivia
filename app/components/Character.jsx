@@ -45,10 +45,10 @@ class Character extends React.Component {
 
     return (
       <div style={this.props.style} className="character">
-        <div className="characterInfo">
+        <div className={`characterInfo status-${lifeStatus}`}>
           <span className="name">{this.state.name}</span>
           <span className="bar">
-            <span className={`percentage status-${lifeStatus}`} style={{ width: `${this.state.life * 100}%` }} />
+            <span className="percentage" style={{ width: `${this.state.life * 100}%` }} />
           </span>
         </div>
         <img src={`public/${outfitImage}`} alt="" />
