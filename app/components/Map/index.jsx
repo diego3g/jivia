@@ -1,8 +1,10 @@
 /* @flow */
 import React from 'react';
 import _ from 'lodash';
+import config from 'config';
 import { connect } from 'react-redux';
-import 'components/assets/styles/Map.scss';
+
+import 'assets/styles/Map.scss';
 
 import Tile from 'components/Tile';
 import Creature from 'components/Creature';
@@ -34,8 +36,8 @@ class Map extends React.Component {
         <div
           className="mapView"
           style={{
-            left: -64 * (this.props.character.position.x - 9),
-            top: -64 * (this.props.character.position.y - 5),
+            left: (config.mapSize.sqm * -1) * (this.props.character.position.x - 9),
+            top: (config.mapSize.sqm * -1) * (this.props.character.position.y - 5),
           }}
         >
           { _.map(gameMap, (mapPos, key) => (
@@ -48,7 +50,7 @@ class Map extends React.Component {
             >
               { _.map(mapPos.additional, (add) => {
                 /* eslint-disable global-require, import/no-dynamic-require */
-                const addImage = require(`components/assets/images/${add.image}`);
+                const addImage = require(`assets/images/game/${add.image}`);
                 return <img key={key} src={`public/${addImage}`} alt="" />;
               }) }
             </Tile>
@@ -57,8 +59,8 @@ class Map extends React.Component {
           { _.map(npcs, (npc, key) => (
             <Creature
               style={{
-                left: 64 * npc.x,
-                top: 64 * npc.y,
+                left: (config.mapSize.sqm) * npc.x,
+                top: (config.mapSize.sqm) * npc.y,
               }}
               key={key}
               outfit={npc.outfit}

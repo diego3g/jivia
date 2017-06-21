@@ -13,7 +13,7 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  cursor: url('./components/assets/cursor.png'), auto;
+  cursor: url('assets/cursor.png'), auto;
 
   .gameContainer {
     display: flex;

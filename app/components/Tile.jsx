@@ -7,7 +7,7 @@ import tiles from 'resources/tiles.json';
 import npcs from 'resources/npcs.json';
 
 class Tile extends React.Component {
-  static isWalkable(pos: any): void {
+  static isWalkable(pos: any): boolean {
     const mapTile = _.find(gameMap, { x: pos.x, y: pos.y, z: pos.z });
 
     if (!mapTile) return false;
@@ -43,7 +43,7 @@ class Tile extends React.Component {
 
   render() {
     /* eslint-disable global-require, import/no-dynamic-require */
-    const tileImage = require(`./assets/images/tiles/${this.state.tile.type}/sprite.png`);
+    const tileImage = require(`assets/images/game/tiles/${this.state.tile.type}/sprite.png`);
 
     return (
       <div

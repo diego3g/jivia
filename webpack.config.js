@@ -30,14 +30,14 @@ module.exports = {
           name: '[hash].[ext]',
         },
         include: [
-          path.resolve(__dirname, "./app/components/assets/images")
+          path.resolve(__dirname, "./app/assets/images/game")
         ],
       },
       {
         test: /\.(png|jpg|gif|)$/,
         loader: 'url-loader?limit=200000',
         exclude: [
-          path.resolve(__dirname, "./app/components/assets/images")
+          path.resolve(__dirname, "./app/assets/images/game")
         ],
       },
       {
