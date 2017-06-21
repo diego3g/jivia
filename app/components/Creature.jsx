@@ -2,6 +2,8 @@
 import React from 'react';
 import config from 'config';
 
+import 'assets/styles/Creature.scss';
+
 import outfits from 'resources/outfits.json';
 
 export default class Creature extends React.Component {
@@ -47,10 +49,10 @@ export default class Creature extends React.Component {
 
     return (
       <div
-        style={[this.props.style, {
+        style={Object.assign(this.props.style, {
           width: `${config.mapSize.sqm}px`,
           height: `${config.mapSize.sqm}px`,
-        }]}
+        })}
         className="character"
       >
         <div className={`characterInfo status-${lifeStatus}`}>

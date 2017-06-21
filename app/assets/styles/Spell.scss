@@ -1,0 +1,22 @@
+.spell {
+  border-radius: 3px;
+  border: 1px solid #666;
+  height: 50px;
+  margin-right: 5px;
+
+  position: relative;
+
+  .hotkey {
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #999;
+    text-shadow: 1px 1px 1px #000;
+  }
+
+  img {
+    height: 100%;
+  }
+}

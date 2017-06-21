@@ -59,8 +59,8 @@ class Map extends React.Component {
           { _.map(npcs, (npc, key) => (
             <Creature
               style={{
-                left: (config.mapSize.sqm) * npc.x,
-                top: (config.mapSize.sqm) * npc.y,
+                left: config.mapSize.sqm * npc.x,
+                top: config.mapSize.sqm * npc.y,
               }}
               key={key}
               outfit={npc.outfit}

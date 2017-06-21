@@ -1,0 +1,19 @@
+[
+  {
+    "id": "warrior",
+    "growth": {
+      "health": 15,
+      "mana": 5
+    },
+    "regeneration": {
+      "health": "3",
+      "mana": "1"
+    },
+    "improvement": {
+      "magic": 1,
+      "physical": 5,
+      "defense": 4,
+      "distance": 1
+    }
+  }
+]

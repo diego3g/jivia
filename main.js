@@ -14,7 +14,7 @@ function createWindow() {
     width: screenSize.width,
     height: screenSize.height,
     minWidth: 1440,
-    minHeight: 800,
+    minHeight: 832,
   });
 
   mainWindow.loadURL(url.format({

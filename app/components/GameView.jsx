@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react';
 import config from 'config';
+
 import 'assets/styles/GameView.scss';
 
 import Map from 'components/Map';

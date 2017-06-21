@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Throttle from 'lodash-decorators/throttle';
 
-import 'assets/styles/Character.scss';
-
 import Creature from 'components/Creature';
 
 import * as actions from './actions';

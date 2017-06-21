@@ -20,6 +20,10 @@ class Tile extends React.Component {
     return true;
   }
 
+  static defaultProps = {
+    tile: null,
+  }
+
   constructor(props: any) {
     super(props);
 

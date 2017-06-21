@@ -1,0 +1,10 @@
+{
+  "enchant": {
+    "image": "enchant-blue-1",
+    "cooldown": 5
+  },
+  "heal": {
+    "image": "heal-jade-1",
+    "cooldown": 3
+  }
+}
