@@ -1,10 +1,8 @@
-/* @flow */
 import React from 'react';
-import 'components/assets/styles/Character.scss';
 
 import outfits from 'resources/outfits.json';
 
-class Character extends React.Component {
+export default class Creature extends React.Component {
   static defaultProps = {
     life: 1,
     outfit: '1',
@@ -20,6 +18,7 @@ class Character extends React.Component {
       life: props.life,
       outfit: props.outfit,
       position: props.position,
+      keyState: {},
     };
   }
 
@@ -28,6 +27,7 @@ class Character extends React.Component {
     life: number,
     outfit: string,
     position: string,
+    keyState: any,
   }
 
   render() {
@@ -56,5 +56,3 @@ class Character extends React.Component {
     );
   }
 }
-
-export default Character;

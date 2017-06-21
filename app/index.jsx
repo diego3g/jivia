@@ -1,13 +1,22 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
 import reducers from './redux/reducers';
 import './app.scss';
 
 import GameView from './components/GameView';
 
-const store = createStore(reducers);
+const middleware = [thunkMiddleware];
+
+const store = createStore(
+  reducers,
+  {},
+  compose(
+    applyMiddleware(...middleware),
+  ),
+);
 
 const App = () =>
   (<div className="wrapper">

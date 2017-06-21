@@ -1,103 +1,31 @@
 /* @flow */
 import React from 'react';
 import _ from 'lodash';
-import Throttle from 'lodash-decorators/throttle';
+import { connect } from 'react-redux';
 import 'components/assets/styles/Map.scss';
 
 import Tile from 'components/Tile';
-import Character from 'components/Character';
+import Creature from 'components/Creature';
 
 import gameMap from 'resources/map.json';
 import npcs from 'resources/npcs.json';
 
+const mapStateToProps = state => ({
+  character: state.character,
+});
+
+@connect(mapStateToProps)
 class Map extends React.Component {
   constructor(props: any) {
     super(props);
 
     this.state = {
       tiles: [],
-      keyState: {},
-      charPos: {
-        x: 8,
-        y: 6,
-        z: 0,
-        ref: 'down',
-      },
     };
   }
 
   state: {
-    tiles: any,
-    keyState: any,
-    charPos: {
-      x: number,
-      y: number,
-      z: number,
-      ref: string,
-    }
-  }
-
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown.bind(this), true);
-    window.addEventListener('keyup', this.handleKeyUp.bind(this), true);
-
-    setInterval(this.walk.bind(this), 10);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown.bind(this), true);
-    window.removeEventListener('keyup', this.handleKeyUp.bind(this), true);
-  }
-
-  handleKeyDown(e: any): void {
-    this.setState((state) => {
-      const newState = state;
-
-      newState.keyState[e.key] = true;
-      return newState;
-    });
-  }
-
-  handleKeyUp(e: any): void {
-    this.setState((state) => {
-      const newState = state;
-
-      newState.keyState[e.key] = false;
-      return newState;
-    });
-  }
-
-  @Throttle(200, { trailing: false })
-  changeMapPosition(pos: any): void {
-    this.setState((state) => {
-      const newState = state;
-      newState.charPos = pos;
-
-      return newState;
-    });
-  }
-
-  walkTo(axis: string, value: number): void {
-    if (value < 0) return;
-
-    const newPos = _.clone(this.state.charPos);
-    newPos[axis] = value;
-
-    if (!Tile.isWalkable(newPos)) return;
-
-    this.changeMapPosition(newPos);
-  }
-
-  walk() {
-    if (this.state.keyState.w) {
-      this.walkTo('y', this.state.charPos.y - 1);
-    } else if (this.state.keyState.s) {
-      this.walkTo('y', this.state.charPos.y + 1);
-    } else if (this.state.keyState.a) {
-      this.walkTo('x', this.state.charPos.x - 1);
-    } else if (this.state.keyState.d) {
-      this.walkTo('x', this.state.charPos.x + 1);
-    }
+    tiles: any
   }
 
   render() {
@@ -106,8 +34,8 @@ class Map extends React.Component {
         <div
           className="mapView"
           style={{
-            left: -64 * (this.state.charPos.x - 9),
-            top: -64 * (this.state.charPos.y - 5),
+            left: -64 * (this.props.character.position.x - 9),
+            top: -64 * (this.props.character.position.y - 5),
           }}
         >
           { _.map(gameMap, (mapPos, key) => (
@@ -127,7 +55,7 @@ class Map extends React.Component {
           )) }
 
           { _.map(npcs, (npc, key) => (
-            <Character
+            <Creature
               style={{
                 left: 64 * npc.x,
                 top: 64 * npc.y,
@@ -138,7 +66,7 @@ class Map extends React.Component {
             />
           ))}
         </div>
-        <Character name="Diego" className="mainCharacter" life={1} position={this.state.charPos.ref} />
+        { this.props.children }
       </div>
     );
   }
