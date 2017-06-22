@@ -31,12 +31,13 @@ export default class Item extends React.Component {
   render() {
     /* eslint-disable global-require, import/no-dynamic-require */
     const itemImage = require(`assets/images/game/items/${this.state.item.image}.png`);
+    const itemSFX = `game/itens/${this.state.item.image}.flac`;
 
     return (
       <div className="hotkeyImage" onClick={this.cast}>
         <img src={`public/${itemImage}`} alt="" />
 
-        <Hotkey shortcut={this.props.shortcut} cooldown={this.state.item.cooldown} />
+        <Hotkey shortcut={this.props.shortcut} cooldown={this.state.item.cooldown} audio={itemSFX} />
       </div>
     );
   }

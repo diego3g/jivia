@@ -17,6 +17,7 @@ export default class Hotkey extends React.Component {
   static defaultProps = {
     cooldown: 0,
     shortcut: null,
+    audio: '',
   };
 
   constructor(props) {
@@ -68,6 +69,19 @@ export default class Hotkey extends React.Component {
 
   cast(): void {
     if (this.state.onCooldown || this.props.globalCooldown) return;
+
+    let SFX;
+    try {
+      /* eslint-disable global-require, import/no-dynamic-require */
+      SFX = require(`assets/audios/${this.props.audio}`);
+    } catch (error) {
+      console.error(`Arquivo de audio não encontrado. Error: ${error}`);
+    }
+
+    const player = new Audio(`public/${SFX}`);
+
+    player.volume = 0.5;
+    player.play();
 
     this.props.enableGlobalCooldown();
     this.setOnCooldown();
