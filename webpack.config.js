@@ -34,7 +34,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(mp3|ogg|wav)$/,
+        test: /\.(mp3|ogg|wav|flac)$/,
         loader: 'file-loader',
         options: {
           name: '[hash].[ext]',
