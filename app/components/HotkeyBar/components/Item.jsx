@@ -1,11 +1,11 @@
 /* @flow */
 import React from 'react';
 
-import spells from 'resources/spells.json';
+import items from 'resources/items.json';
 
 import Hotkey from './Hotkey';
 
-export default class Spell extends React.Component {
+export default class Item extends React.Component {
   static defaultProps = {
     id: null,
   };
@@ -14,14 +14,14 @@ export default class Spell extends React.Component {
     super(props);
 
     this.state = {
-      spell: spells[this.props.id],
+      item: items[this.props.id],
     };
 
     this.cast = this.cast.bind(this);
   }
 
   state: {
-    spell: any,
+    item: any,
   };
 
   cast(): void {
@@ -30,13 +30,13 @@ export default class Spell extends React.Component {
 
   render() {
     /* eslint-disable global-require, import/no-dynamic-require */
-    const spellImage = require(`assets/images/game/spells/${this.state.spell.image}.png`);
+    const itemImage = require(`assets/images/game/items/${this.state.item.image}.png`);
 
     return (
       <div className="hotkeyImage" onClick={this.cast}>
-        <img src={`public/${spellImage}`} alt="" />
+        <img src={`public/${itemImage}`} alt="" />
 
-        <Hotkey shortcut={this.props.shortcut} cooldown={this.state.spell.cooldown} />
+        <Hotkey shortcut={this.props.shortcut} cooldown={this.state.item.cooldown} />
       </div>
     );
   }
