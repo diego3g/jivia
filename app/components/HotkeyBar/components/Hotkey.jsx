@@ -69,6 +69,14 @@ export default class Hotkey extends React.Component {
   cast(): void {
     if (this.state.onCooldown || this.props.globalCooldown) return;
 
+    /* eslint-disable global-require, import/no-dynamic-require */
+    const spellSFX = require(`assets/audios/game/spells/${this.props.spell}.wav`);
+    const player = new Audio(`public/${spellSFX}`);
+
+    player.onerror = () => console.warn('Arquivo de audio não encontrado.');
+    player.volume = 0.5;
+    player.play();
+
     this.props.enableGlobalCooldown();
     this.setOnCooldown();
   }

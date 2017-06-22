@@ -34,6 +34,16 @@ module.exports = {
         ],
       },
       {
+        test: /\.(mp3|ogg|wav)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[hash].[ext]',
+        },
+        include: [
+          path.resolve(__dirname, './app/assets/audios/game'),
+        ],
+      },
+      {
         test: /\.(png|jpg|gif|ttf|woff|woff2|)$/,
         loader: 'url-loader?limit=200000',
         exclude: [

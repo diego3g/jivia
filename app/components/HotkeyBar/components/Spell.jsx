@@ -38,7 +38,7 @@ export default class Spell extends React.Component {
       <div className="hotkeyImage" onClick={this.cast}>
         <img src={`public/${spellImage}`} alt="" />
 
-        <Hotkey shortcut={this.props.shortcut} cooldown={this.state.spell.cooldown} />
+        <Hotkey shortcut={this.props.shortcut} cooldown={this.state.spell.cooldown} spell={this.props.spell} />
       </div>
     );
   }
