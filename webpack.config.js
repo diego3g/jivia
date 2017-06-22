@@ -30,14 +30,14 @@ module.exports = {
           name: '[hash].[ext]',
         },
         include: [
-          path.resolve(__dirname, "./app/assets/images/game")
+          path.resolve(__dirname, './app/assets/images/game'),
         ],
       },
       {
-        test: /\.(png|jpg|gif|)$/,
+        test: /\.(png|jpg|gif|ttf|woff|woff2|)$/,
         loader: 'url-loader?limit=200000',
         exclude: [
-          path.resolve(__dirname, "./app/assets/images/game")
+          path.resolve(__dirname, './app/assets/images/game'),
         ],
       },
       {
@@ -50,7 +50,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     modules: [
       'app',
-      'node_modules'
+      'node_modules',
     ],
   },
 };

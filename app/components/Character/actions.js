@@ -19,7 +19,3 @@ export function walk(axis, quantity = 1) {
     });
   };
 }
-
-export const heal = () => ({
-  type: types.HEAL,
-});

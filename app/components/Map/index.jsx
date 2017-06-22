@@ -1,6 +1,5 @@
 /* @flow */
 import React from 'react';
-import _ from 'lodash';
 import config from 'config';
 import { connect } from 'react-redux';
 
@@ -40,29 +39,29 @@ class Map extends React.Component {
             top: (config.mapSize.sqm * -1) * (this.props.character.position.y - 5),
           }}
         >
-          { _.map(gameMap, (mapPos, key) => (
+          { gameMap.map(mapPos => (
             <Tile
-              key={key}
+              key={`${mapPos.z}${mapPos.y}${mapPos.x}`}
               tile={mapPos.tile}
               x={mapPos.x}
               y={mapPos.y}
               z={mapPos.z}
             >
-              { _.map(mapPos.additional, (add) => {
+              { mapPos.additional.map((add) => {
                 /* eslint-disable global-require, import/no-dynamic-require */
                 const addImage = require(`assets/images/game/${add.image}`);
-                return <img key={key} src={`public/${addImage}`} alt="" />;
+                return <img key={`${mapPos.z}${mapPos.y}${mapPos.x}`} src={`public/${addImage}`} alt="" />;
               }) }
             </Tile>
           )) }
 
-          { _.map(npcs, (npc, key) => (
+          { npcs.map(npc => (
             <Creature
               style={{
                 left: config.mapSize.sqm * npc.x,
                 top: config.mapSize.sqm * npc.y,
               }}
-              key={key}
+              key={npc.name}
               outfit={npc.outfit}
               name={npc.name}
             />

@@ -5,6 +5,10 @@
   },
   "heal": {
     "image": "heal-jade-1",
-    "cooldown": 3
+    "cooldown": 2
+  },
+  "intense-heal": {
+    "image": "heal-jade-2",
+    "cooldown": 4
   }
 }

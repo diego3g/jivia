@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Augusta';
+  src: url('assets/fonts/augusta.woff2') format('woff2'),
+       url('assets/fonts/augusta.woff') format('woff'),
+       url('assets/fonts/augusta.ttf')  format('truetype');
+}
+
 html, body, #app, .wrapper {
   height: 100%;
 }
