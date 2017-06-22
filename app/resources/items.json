@@ -1,0 +1,10 @@
+{
+  "health-potion": {
+    "image": "health-potion",
+    "cooldown": 2
+  },
+  "mana-potion": {
+    "image": "mana-potion",
+    "cooldown": 2
+  }
+}
