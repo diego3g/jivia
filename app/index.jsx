@@ -7,6 +7,7 @@ import reducers from 'redux/reducers';
 import 'app.scss';
 
 import GameView from 'components/GameView';
+import RightBar from 'components/RightBar';
 import HotkeyBar from 'components/HotkeyBar';
 
 const middleware = [thunkMiddleware];
@@ -23,7 +24,7 @@ const App = () => (
   <div className="wrapper">
     <div className="gameContainer">
       <GameView />
-      <div className="rightBar" />
+      <RightBar />
     </div>
     <div className="hotkeysContainer">
       <HotkeyBar />

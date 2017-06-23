@@ -31,13 +31,17 @@ export default class Spell extends React.Component {
   render() {
     /* eslint-disable global-require, import/no-dynamic-require */
     const spellImage = require(`assets/images/game/spells/${this.state.spell.image}.png`);
-    const spellSFX = `game/spells/${this.state.spell.image}.wav`;
+    const spellAudio = `game/spells/${this.state.spell.image}.wav`;
 
     return (
       <div className="hotkeyImage" onClick={this.cast}>
         <img src={`public/${spellImage}`} alt="" />
 
-        <Hotkey shortcut={this.props.shortcut} cooldown={this.state.spell.cooldown} audio={spellSFX} />
+        <Hotkey
+          shortcut={this.props.shortcut}
+          cooldown={this.state.spell.cooldown}
+          audio={spellAudio}
+        />
       </div>
     );
   }

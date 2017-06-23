@@ -14,6 +14,8 @@ body {
   padding: 0;
   background: #000;
   font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  color: #FFF;
 }
 
 .wrapper {
@@ -24,14 +26,6 @@ body {
   .gameContainer {
     display: flex;
     flex-direction: row;
-
-    .rightBar {
-      flex: 1;
-      width: 200px;
-      background: #333;
-
-      position: relative;
-    }
   }
 
   .hotkeysContainer {

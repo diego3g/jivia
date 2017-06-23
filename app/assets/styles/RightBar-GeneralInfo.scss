@@ -1,0 +1,60 @@
+.generalInfo {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #444;
+
+  .experience {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-size: 12px;
+    font-weight: bold;
+    color: #999;
+  }
+
+  .status {
+    margin-top: 15px;
+  }
+
+  .barWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 5px;
+
+    .amount {
+      width: 35px;
+      font-size: 11px;
+      margin-left: 5px;
+      color: #999;
+    }
+  }
+
+  .bar {
+    flex: 1;
+    background: #111;
+    border: 1px solid #444;
+    height: 5px;
+
+    span {
+      display: block;
+      height: 100%;
+    }
+
+    &.bar--health, &.bar--mana {
+      height: 15px;
+    }
+
+    &.bar--experience span {
+      background: purple;
+    }
+
+    &.bar--health span {
+      background: green;
+    }
+
+    &.bar--mana span {
+      background: blue;
+    }
+  }
+}
